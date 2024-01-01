@@ -15,7 +15,7 @@
   </tr>
   <tr>
     <td>2</td>
-    <td></td>
+    <td>閱讀coding_rule.txt</td>
   </tr>
   <tr>
     <td>3</td>

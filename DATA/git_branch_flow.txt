@@ -1,0 +1,31 @@
+git pull
+//更新本地到最新的codebase
+
+git branch
+//檢查目前處在在哪個分支
+
+git branch dep
+//創立dep分支
+
+git checkout dep
+//切換到dep分支並在此分支開發
+ 
+git add -A
+//新增或修改完檔案使用此方式加入全部更動的檔案
+
+git commit -m "XXXX"
+//此版本的更動訊息 
+
+git checkout main
+//切換回主要分支
+
+git pull
+//再次更新本地到最新的codebase
+ 
+git merge dep
+//在主分支合併dep分支修改的內容
+
+git push
+//將修改的內容推到codebase
+
+

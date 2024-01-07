@@ -4,24 +4,16 @@
 
 
 **TODO:**
-<table>
-  <tr>
-    <td>項次</td>
-    <td>描述</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>練習commit 文件到commit_test</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>閱讀coding_rule.txt</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td></td>
-  </tr>
-</table>
+2024/1/1   
+1.  練習commit 文件到commit_test
+2.  閱讀coding_rule.txt
+   
+2024/1/7   
+1.  尋找購買機台   
+2.  尋找機台放置位置   
+3.  git branch練習   
+
+
 
 **Reference:**
   **Android APP:**   

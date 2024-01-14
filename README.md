@@ -18,8 +18,8 @@
 2.  尋找智能魚缸突破痛點   
 
 
-**Reference:**
-  **[夾娃娃機]** 
+**Reference:**   
+  **[夾娃娃機]**   
   **Android APP:**   
     [Claw Eden] https://play.google.com/store/apps/details?id=com.claweden.arcade.toy&hl=en&gl=US&pli=1   
     [Claw Machine Master] https://play.google.com/store/apps/details?id=jp.claw.cremas3&hl=en&gl=US   

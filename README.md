@@ -37,7 +37,7 @@
     https://www.bnext.com.tw/article/55734/kitchbot?   
     https://www.cryptocity.tw/online-crane-nft-game-how-to-play   
 
-** [智能魚缸]**    
+**[智能魚缸]**    
 嘖嘖募資成功:   
 1.   
 https://www.zeczec.com/projects/armentor   

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
-from bottle import route, run
 from gpiozero import LED
 from gpiozero import AngularServo
 from time import sleep

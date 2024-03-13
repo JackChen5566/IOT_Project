@@ -26,6 +26,7 @@
     <h1>Web Interface GPIO Control</h1>
     <h2>LED 0: {{ states.0 }}</h2>
     <h2>LED 1: {{ states.1 }}</h2>
+    <h2>WaterPump: {{pumpstate}}</h2>
 
     <!-- Gray box container for buttons -->
     <div id="buttonContainer">
@@ -54,7 +55,7 @@
             <input type='button' onClick='changed(5)' value='Button 5'/>
         </div>
         <div class="button">
-            <input type='button' onClick='changed(6)' value='Button 6'/>
+            <input type='button' onClick='pump_run()' value='WaterPump'/>
         </div>
     </div>
 
@@ -69,6 +70,10 @@
                 document.getElementById("controlServoButton").disabled = false;
             }, 5000);
             window.location.href='/control_servo/';
+        }
+
+        function pump_run(){
+            window.location.href='/WaterPump/';
         }
     </script>
 </body>

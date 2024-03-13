@@ -4,6 +4,11 @@ from datetime import datetime
 from gpiozero import LED
 from gpiozero import AngularServo
 from time import sleep
+from gpiozero import OutputDevice
+
+pump = OutputDevice(18)
+pump.off()
+pumpstate=False
 
 leds = [LED(26), LED(27)]
 states = [False, False]
@@ -34,10 +39,16 @@ def cleanup_gpio():
 
 def index(request):
     update_leds()
-    return render(request, 'index.html', {'states': states})
+    return render(request, 'index.html', {'states': states,'pumpstate': pumpstate})
 
 def toggle(request, led):
     if 0 <= led <= 1:
         states[led] = not states[led]
         update_leds()
+    return index(request)
+
+def pump_run(request):
+    global pumpstate
+    pump.toggle()
+    pumpstate = not pumpstate
     return index(request)

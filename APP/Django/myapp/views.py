@@ -4,6 +4,7 @@ from datetime import datetime
 from gpiozero import LED
 from gpiozero import AngularServo
 from time import sleep
+from myapp import test_fk
 
 leds = [LED(26), LED(27)]
 states = [False, False]
@@ -41,3 +42,6 @@ def toggle(request, led):
         states[led] = not states[led]
         update_leds()
     return index(request)
+def temperature_data(request):
+    (h,temperature)=test_fk.temperature()
+    return render(request, 'index.html', {'temperature': temperature})

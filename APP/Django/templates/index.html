@@ -26,7 +26,11 @@
     <h1>Web Interface GPIO Control</h1>
     <h2>LED 0: {{ states.0 }}</h2>
     <h2>LED 1: {{ states.1 }}</h2>
+<<<<<<< HEAD
     <h2>WaterPump: {{pumpstate}}</h2>
+=======
+    <h2>Temperature is {{temperature}} now</h2>
+>>>>>>> tem
 
     <!-- Gray box container for buttons -->
     <div id="buttonContainer">
@@ -41,7 +45,7 @@
             <input type='button' id='controlServoButton' onClick='controlServo()' value='Control Servo'/>
         </div>
         <div class="button">
-            <input type='button' onClick='changed(2)' value='Button 2'/>
+            <input type='button' id="controlTemperatureButton" onClick='controlTemperature()' value='temperature'/>
         </div>
 
         <!-- Second Row of Buttons -->
@@ -71,9 +75,14 @@
             }, 5000);
             window.location.href='/control_servo/';
         }
+<<<<<<< HEAD
 
         function pump_run(){
             window.location.href='/WaterPump/';
+=======
+        function controlTemperature(temperature){
+            window.location.href='/temperature/';
+>>>>>>> tem
         }
     </script>
 </body>

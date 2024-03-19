@@ -4,15 +4,12 @@ from datetime import datetime
 from gpiozero import LED
 from gpiozero import AngularServo
 from time import sleep
-<<<<<<< HEAD
 from gpiozero import OutputDevice
 
 pump = OutputDevice(18)
 pump.off()
 pumpstate=False
-=======
 from myapp import test_fk
->>>>>>> tem
 
 leds = [LED(26), LED(27)]
 states = [False, False]
@@ -50,15 +47,12 @@ def toggle(request, led):
         states[led] = not states[led]
         update_leds()
     return index(request)
-<<<<<<< HEAD
 
 def pump_run(request):
     global pumpstate
     pump.toggle()
     pumpstate = not pumpstate
     return index(request)
-=======
 def temperature_data(request):
     (h,temperature)=test_fk.temperature()
     return render(request, 'index.html', {'temperature': temperature})
->>>>>>> tem

@@ -30,7 +30,15 @@
 
 2024/2/25   
 1. Web Server架構使用Django 並架設在Raspberry Pi上 (榮裕)   
-2. 小魚缸來並架設現有設施 (榮裕)   
+2. 小魚缸來並架設現有設施 (榮裕)
+
+2024/3/17   
+1. Camera using MJPG Stream Server (榮裕)   
+2. 控制MySQl 範例 (榮裕)   
+3. 購物頁面 (佑勳)   
+4. PH sensor control (佑勳)   
+5. 溫度 control commit (慶雄)   
+6. 資料儀表板 (慶雄)  
    
 **Reference:**   
   **[夾娃娃機]**   

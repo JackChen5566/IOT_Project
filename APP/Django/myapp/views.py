@@ -5,15 +5,31 @@ from gpiozero import LED
 from gpiozero import AngularServo
 from time import sleep
 from gpiozero import OutputDevice
+import mysql.connector
+from myapp import test_fk
 
 pump = OutputDevice(18)
 pump.off()
 pumpstate=False
-from myapp import test_fk
 
 leds = [LED(26), LED(27)]
 states = [False, False]
 
+# Database Setup
+db_connection = mysql.connector.connect(
+    host="192.168.58.7",
+    port=8888,
+    user="admin",
+    password="admin",
+    database="led_control"
+)
+cursor = db_connection.cursor()
+
+def record_led_state(led_number, state):
+    cursor.execute('''
+        INSERT INTO led_states (led_number, state) VALUES (%s, %s)
+    ''', (led_number, int(state)))
+    db_connection.commit()
 
 def servo_run():
     servo = AngularServo(17, min_angle=0, max_angle=180, min_pulse_width=0.0005, max_pulse_width=0.0025)
@@ -46,6 +62,7 @@ def toggle(request, led):
     if 0 <= led <= 1:
         states[led] = not states[led]
         update_leds()
+        record_led_state(led, states[led])
     return index(request)
 
 def pump_run(request):
@@ -53,6 +70,7 @@ def pump_run(request):
     pump.toggle()
     pumpstate = not pumpstate
     return index(request)
+
 def temperature_data(request):
     (h,temperature)=test_fk.temperature()
     return render(request, 'index.html', {'temperature': temperature})

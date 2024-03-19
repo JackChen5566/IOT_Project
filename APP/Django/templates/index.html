@@ -26,11 +26,8 @@
     <h1>Web Interface GPIO Control</h1>
     <h2>LED 0: {{ states.0 }}</h2>
     <h2>LED 1: {{ states.1 }}</h2>
-<<<<<<< HEAD
     <h2>WaterPump: {{pumpstate}}</h2>
-=======
     <h2>Temperature is {{temperature}} now</h2>
->>>>>>> tem
 
     <!-- Gray box container for buttons -->
     <div id="buttonContainer">
@@ -75,14 +72,12 @@
             }, 5000);
             window.location.href='/control_servo/';
         }
-<<<<<<< HEAD
 
         function pump_run(){
             window.location.href='/WaterPump/';
-=======
+        }
         function controlTemperature(temperature){
             window.location.href='/temperature/';
->>>>>>> tem
         }
     </script>
 </body>

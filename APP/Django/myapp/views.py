@@ -7,6 +7,8 @@ from time import sleep
 from gpiozero import OutputDevice
 import mysql.connector
 from myapp import test_fk
+from django.http import JsonResponse
+import serial 
 
 pump = OutputDevice(18)
 pump.off()
@@ -74,3 +76,11 @@ def pump_run(request):
 def temperature_data(request):
     (h,temperature)=test_fk.temperature()
     return render(request, 'index.html', {'temperature': temperature})
+
+
+def get_ph_value(request):
+    port = "/dev/ttyACM0"
+    serial_arduino = serial.Serial(port, 9600)
+    serial_arduino.flushInput()
+    ph_value = float(serial_arduino.readline())
+    return JsonResponse({'ph_value': ph_value})

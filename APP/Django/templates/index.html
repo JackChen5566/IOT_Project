@@ -68,6 +68,7 @@
     <h2>LED 1: {{ states.1 }}</h2>
     <h2>WaterPump: {{pumpstate}}</h2>
     <h2>Temperature is {{temperature}} now</h2>
+    <h2>ph:<span id='ph'>0</span></h2>
 
     <!-- Gray box container for buttons -->
     <div id="buttonContainer">
@@ -122,6 +123,23 @@
         function controlTemperature(temperature){
             window.location.href='/temperature/';
         }
+        
+        var phElement = document.getElementById('ph');
+
+        function updatePhValue() {
+            fetch('/get_ph_value/')
+                .then(response => response.json())
+                .then(data => {
+                    phElement.innerText = data.ph_value;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        updatePhValue();
+
+        // 每隔一段时间更新数值
+        setInterval(updatePhValue, 1000); // 这里的1000表示1秒钟
     </script>
 </body>
 </html>

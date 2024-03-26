@@ -5,6 +5,10 @@ from gpiozero import LED
 from gpiozero import AngularServo
 from time import sleep
 from gpiozero import OutputDevice
+import mysql.connector
+from myapp import test_fk
+from django.http import JsonResponse
+import serial 
 
 pump = OutputDevice(18)
 pump.off()
@@ -16,6 +20,21 @@ tem='0'
 leds = [LED(26), LED(27)]
 states = [False, False]
 
+# Database Setup
+db_connection = mysql.connector.connect(
+    host="192.168.58.7",
+    port=8888,
+    user="admin",
+    password="admin",
+    database="led_control"
+)
+cursor = db_connection.cursor()
+
+def record_led_state(led_number, state):
+    cursor.execute('''
+        INSERT INTO led_states (led_number, state) VALUES (%s, %s)
+    ''', (led_number, int(state)))
+    db_connection.commit()
 
 
 def servo_run():
@@ -50,6 +69,7 @@ def toggle(request, led):
     if 0 <= led <= 1:
         states[led] = not states[led]
         update_leds()
+        record_led_state(led, states[led])
     return index(request)
 
 def pump_run(request):
@@ -57,6 +77,7 @@ def pump_run(request):
     pump.toggle()
     pumpstate = not pumpstate
     return index(request)
+<<<<<<< HEAD
                                            # Click to run temperature
 def temperature_data(request):
     global tem
@@ -66,3 +87,17 @@ def temperature_data(request):
     else:
         tem="Reading......"
     return index(request)
+=======
+
+def temperature_data(request):
+    (h,temperature)=test_fk.temperature()
+    return render(request, 'index.html', {'temperature': temperature})
+
+
+def get_ph_value(request):
+    port = "/dev/ttyACM0"
+    serial_arduino = serial.Serial(port, 9600)
+    serial_arduino.flushInput()
+    ph_value = float(serial_arduino.readline())
+    return JsonResponse({'ph_value': ph_value})
+>>>>>>> bf2621810d51d075b4f239be28d414375a2858ef

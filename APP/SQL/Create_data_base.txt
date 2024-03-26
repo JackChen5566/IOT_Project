@@ -1,0 +1,31 @@
+
+CREATE DATABASE IF NOT EXISTS led_control;
+USE led_control;
+
+CREATE TABLE IF NOT EXISTS led_states (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    led_number INT,
+    state INT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE DATABASE IF NOT EXISTS temp_control;
+USE temp_control;
+
+CREATE TABLE TemperatureHumidityData (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Temperature FLOAT,
+    Humidity FLOAT,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE DATABASE IF NOT EXISTS waterpump_control;
+USE waterpump_control;
+
+CREATE TABLE IF NOT EXISTS waterpump_state (
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+    state VARCHAR(10),
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

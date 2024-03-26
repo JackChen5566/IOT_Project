@@ -1,0 +1,80 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Add CSS styles for button container */
+        #buttonContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            background-color: #f0f0f0; /* Gray background color */
+            padding: 10px; /* Padding around the container */
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        /* Add CSS styles for each button */
+        .button {
+            margin: 5px; /* Margin between buttons */
+        }
+    </style>
+    <!-- your head content -->
+</head>
+<body>
+    <h1>Web Interface GPIO Control</h1>
+    <h2>LED 0: {{ states.0 }}</h2>
+    <h2>LED 1: {{ states.1 }}</h2>
+    <h2>WaterPump: {{pumpstate}}</h2>
+
+    <!-- Gray box container for buttons -->
+    <div id="buttonContainer">
+        <!-- First Row of Buttons -->
+        <div class="button">
+            <input type='button' onClick='changed(0)' value='LED 0'/>
+        </div>
+        <div class="button">
+            <input type='button' onClick='changed(1)' value='LED 1'/>
+        </div>
+        <div class="button">
+            <input type='button' id='controlServoButton' onClick='controlServo()' value='Control Servo'/>
+        </div>
+        <div class="button">
+            <input type='button' onClick='changed(2)' value='Button 2'/>
+        </div>
+
+        <!-- Second Row of Buttons -->
+        <div class="button">
+            <input type='button' onClick='changed(3)' value='Button 3'/>
+        </div>
+        <div class="button">
+            <input type='button' onClick='changed(4)' value='Button 4'/>
+        </div>
+        <div class="button">
+            <input type='button' onClick='changed(5)' value='Button 5'/>
+        </div>
+        <div class="button">
+            <input type='button' onClick='pump_run()' value='WaterPump'/>
+        </div>
+    </div>
+
+    <script>
+        function changed(led) {
+            window.location.href='/' + led;
+        }
+
+        function controlServo() {
+            document.getElementById("controlServoButton").disabled = true;
+            setTimeout(function() {
+                document.getElementById("controlServoButton").disabled = false;
+            }, 5000);
+            window.location.href='/control_servo/';
+        }
+
+        function pump_run(){
+            window.location.href='/WaterPump/';
+        }
+    </script>
+</body>
+</html>

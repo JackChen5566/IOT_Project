@@ -9,13 +9,9 @@ from gpiozero import OutputDevice
 pump = OutputDevice(18)
 pump.off()
 pumpstate=False
-from myapp import test_fk
 
-temperature = 0
-tem='0'
 leds = [LED(26), LED(27)]
 states = [False, False]
-
 
 
 def servo_run():
@@ -43,8 +39,7 @@ def cleanup_gpio():
 
 def index(request):
     update_leds()
-    temperature=tem
-    return render(request, 'index.html', {'states': states,'pumpstate': pumpstate,'temperature': temperature})
+    return render(request, 'index.html', {'states': states,'pumpstate': pumpstate})
 
 def toggle(request, led):
     if 0 <= led <= 1:
@@ -56,13 +51,4 @@ def pump_run(request):
     global pumpstate
     pump.toggle()
     pumpstate = not pumpstate
-    return index(request)
-                                           # Click to run temperature
-def temperature_data(request):
-    global tem
-    (h,tem)=test_fk.temperature()
-    if tem is not None:
-        tem=str(round(tem,2))
-    else:
-        tem="Reading......"
     return index(request)
